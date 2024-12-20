@@ -67,3 +67,8 @@ jobs:
 
       - name: Lint Ruby files
         run: bin/rubocop -f github
+
+      - name: Run RuboCop
+        run: |
+          chmod +x bin/rubocop
+          bin/rubocop -f github
