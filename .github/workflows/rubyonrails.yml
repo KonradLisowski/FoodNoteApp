@@ -36,11 +36,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
 
-      - name: Make scripts executable
-        run: chmod +x bin/*
+      - name: Make all scripts executable
+        run: chmod +x bin/* script/*
 
       - name: Check permissions of scripts
-        run: ls -l bin/
+        run: ls -l bin/ script/
 
       - name: Set up database schema
         run: bundle exec rails db:schema:load
@@ -60,11 +60,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
 
-      - name: Make scripts executable
-        run: chmod +x bin/*
+      - name: Make all scripts executable
+        run: chmod +x bin/* script/*
 
       - name: Check permissions of scripts
-        run: ls -l bin/
+        run: ls -l bin/ script/
 
       - name: Lint Ruby files
         run: bundle exec rubocop -f github
