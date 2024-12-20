@@ -8,6 +8,9 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
+  # To stop error
+  config.hosts << "ec2-50-17-51-228.compute-1.amazonaws.com"
+
   # Do not eager load code on boot.
   config.eager_load = false
 
