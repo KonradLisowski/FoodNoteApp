@@ -48,3 +48,6 @@ jobs:
 
       - name: Lint Ruby files
         run: bin/rubocop -f github
+
+      - name: Fix permissions for bin scripts
+        run: chmod +x bin/*
