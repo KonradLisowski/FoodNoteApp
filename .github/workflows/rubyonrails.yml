@@ -28,15 +28,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # Add or replace dependency steps here
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
         with:
           bundler-cache: true
-      # Add or replace database setup steps here
+
+      - name: Make bin/rails executable
+        run: chmod +x bin/rails
+
       - name: Set up database schema
         run: bin/rails db:schema:load
-      # Add or replace test runners here
+
       - name: Run tests
         run: bin/rake
 
@@ -45,16 +48,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
         with:
           bundler-cache: true
+
       - name: Generate binstubs
         run: bundle binstubs bundler-audit brakeman rubocop
-      # Add or replace any other lints here
+
       - name: Security audit dependencies
         run: bundle exec bundle audit --update
+
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
+
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
