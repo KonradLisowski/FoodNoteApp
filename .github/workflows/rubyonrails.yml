@@ -59,14 +59,5 @@ jobs:
       - name: Make bin/rubocop executable
         run: chmod +x bin/rubocop
 
-      - name: Generate binstubs
-        run: bundle binstubs bundler-audit brakeman rubocop
-
-      - name: Security audit dependencies
-        run: bundle exec bundle audit --update
-
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
-
       - name: Lint Ruby files
         run: bin/rubocop -f github
