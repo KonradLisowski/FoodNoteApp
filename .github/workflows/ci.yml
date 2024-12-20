@@ -19,6 +19,12 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Make bin/rails and bin/rubocop executable
+        run: chmod +x bin/rails bin/rubocop
+
+      - name: Check permissions of bin/rails and bin/rubocop
+        run: ls -l bin/rails bin/rubocop
+
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
@@ -34,7 +40,13 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Lint code for consistent style
+      - name: Make bin/rubocop executable
+        run: chmod +x bin/rubocop
+
+      - name: Check permissions of bin/rubocop
+        run: ls -l bin/rubocop
+
+      - name: Lint Ruby files
         run: bin/rubocop -f github
 
   test:
