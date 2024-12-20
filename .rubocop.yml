@@ -6,8 +6,8 @@
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
-Documentation:
-  enabled: false
+Style/Documentation:
+  Enabled: false
 
 Metrics/MethodLength:
   Enabled: false
