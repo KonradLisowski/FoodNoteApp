@@ -38,6 +38,9 @@ jobs:
       - name: Make bin/rails and bin/rubocop executable
         run: chmod +x bin/rails bin/rubocop
 
+      - name: Check permissions of bin/rails and bin/rubocop
+        run: ls -l bin/rails bin/rubocop
+
       - name: Set up database schema
         run: bin/rails db:schema:load
 
@@ -58,6 +61,9 @@ jobs:
 
       - name: Make bin/rubocop executable
         run: chmod +x bin/rubocop
+
+      - name: Check permissions of bin/rubocop
+        run: ls -l bin/rubocop
 
       - name: Lint Ruby files
         run: bin/rubocop -f github
