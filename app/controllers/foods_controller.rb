@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# This is a top level comment
 class FoodsController < ApplicationController
-  before_action :set_food, only: %i[ show update destroy ]
+  before_action :set_food, only: %i[show update destroy]
 
   # GET /foods
   def index
@@ -39,13 +42,14 @@ class FoodsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_food
-      @food = Food.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def food_params
-      params.expect(food: [ :name, :notes ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_food
+    @food = Food.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def food_params
+    params.expect(food: %i[name notes])
+  end
 end
